@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@firebase/app": "^0.9.18",
-    "@firebase/auth": "^1.3.0",
-    "@firebase/firestore": "^4.1.3",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
@@ -37,6 +34,7 @@
     "react-date-range": "^1.4.0",
     "react-datepicker": "^4.18.0",
     "react-dom": "^18.2.0",
+    "react-flatpickr": "^3.10.13",
     "react-icons": "^4.11.0",
     "react-modern-calendar-datepicker": "^3.1.6",
     "react-redux": "^8.1.2",
@@ -77,6 +75,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react-datepicker": "^4.15.1",
+    "@types/react-flatpickr": "^3.8.11",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.30",
     "tailwindcss": "^3.3.3"

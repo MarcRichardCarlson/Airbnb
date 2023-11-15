@@ -1,10 +1,5 @@
 import React, { useState } from 'react'
 import { useCart } from '../../context/CartContext';
-import { FaWifi } from 'react-icons/fa';
-import { FaKitchenSet } from 'react-icons/fa6';
-import { BiCoffee } from 'react-icons/bi';
-import { LuBedDouble } from 'react-icons/lu';
-import { PiTelevisionBold } from 'react-icons/pi';
 import { Link } from 'react-router-dom';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { useParams } from 'react-router-dom';

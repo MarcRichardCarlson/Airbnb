@@ -23,5 +23,5 @@
   "include": [
     "src"
   ],
-  "types": ["node", "react", "react-dom", "@types/bootstrap"]
+  "types": ["node", "react", "react-dom", "@types/bootstrap"],
 }

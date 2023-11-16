@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
 import axios from 'axios';
 
 const Register = () => {

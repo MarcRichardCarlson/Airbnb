@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
-import { useParams } from 'react-router-dom';
-import { useBooking } from '../../context/BookingContext';
+import { useLocation } from 'react-router-dom';
 
 interface ProductDetailsProps {
     creationDate: string | number | Date;
@@ -22,13 +21,21 @@ const calculateMomsAddition = (price: number): number => {
 
 const Payment: React.FC = () => {
     const [showText1, setShowText1] = useState(false);
-    const { startDate, endDate } = useParams<{ startDate?: string; endDate?: string }>();
-    const { selectedDates } = useBooking();
     const { cartItems } = useCart();
+    const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
-    const formatDate = (date: Date | null) => {
-        return date ? date.toLocaleDateString() : 'N/A';
-    };
+  const startDateParam = queryParams.get('startDate');
+  const endDateParam = queryParams.get('endDate');
+
+  // Parse ISO strings to Date objects
+  const startDateObj = startDateParam ? new Date(startDateParam) : null;
+  const endDateObj = endDateParam ? new Date(endDateParam) : null;
+
+  useEffect(() => {
+    console.log('startDateObj:', startDateObj);
+    console.log('endDateObj:', endDateObj);
+  }, [startDateObj, endDateObj]);
 
   return (
     <div className='flex h-screen'>
@@ -77,8 +84,13 @@ const Payment: React.FC = () => {
                     </div>
                     
                     <div className='flex justify-around items-center font-bold bg-DEDE h-16 rounded-sm mt-4 p-1'>
-                    <p>Från: {formatDate(selectedDates[0])}</p>
-                    <p>Till: {formatDate(selectedDates[1])}</p>
+                    {startDateObj && endDateObj ? (
+                        <p>
+                        Selected dates: {startDateObj.toLocaleDateString()} - {endDateObj.toLocaleDateString()}
+                        </p>
+                    ) : (
+                        <p>Dates not found in the URL parameters.</p>
+                    )}
                         <p>Antal gäster  4</p>
                     </div>
                 </div>

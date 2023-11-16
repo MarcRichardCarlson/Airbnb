@@ -10,11 +10,7 @@ import { PiTelevisionBold } from 'react-icons/pi';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import Carousel from '../../components/carousel/Carousel';
 import { LiaStarSolid } from 'react-icons/lia';
-import { DatePicker } from '@mantine/dates';
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
-import './mantineDatePicker.css'
-import { useBooking } from '../../context/BookingContext';
+import RangeDatePicker from '../../components/calendar/calendar';
 
 
 interface ProductDetailsProps {
@@ -33,7 +29,13 @@ const DetailsPage: React.FC = () => {
   const [product, setProduct] = useState<ProductDetailsProps | null>(null);
   const { productId } = useParams<{ productId: string }>();
   const [showText1, setShowText1] = useState(false);
-  const [value, setValue] = useState<[Date | null, Date | null]>([null, null]);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const handleDateChange = (start: Date | null, end: Date | null) => {
+    setStartDate(start);
+    setEndDate(end);
+  };
 
 
   /*Window Resize*/
@@ -56,13 +58,7 @@ const DetailsPage: React.FC = () => {
   const { 
   addToCart,
   } = useCart();
-
-  const { selectedDates, setDates } = useBooking();
-
-  const handleDateChange = (newValue: [Date | null, Date | null]) => {
-    console.log('Selected Dates:', newValue);
-    setDates(newValue);
-  };
+  
 
   /*Fetching products by ID*/
   useEffect(() => {
@@ -121,7 +117,7 @@ const DetailsPage: React.FC = () => {
           <p>{product.productName}</p>
         </div>
 
-        <div className='flex px-6'>
+        <div className='flex px-8'>
           <div className="flex w-1/2 rounded mr-1">
             <img className="object-cover rounded m-1 cursor-poniter" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
           </div>
@@ -167,9 +163,9 @@ const DetailsPage: React.FC = () => {
         </div>
       </Carousel>
     )}
-
-    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded p-10 mt-2">
-      <div className='w-full'>
+  <div className='px-8'>
+    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded p-10 mt-2 ">
+      <div className='w-3/5'>
       
         <h2 className="text-3xl font-bold">{product.productName}</h2>
         <p className="overflow-auto my-3">{product.description}</p>
@@ -233,13 +229,13 @@ const DetailsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-between items-center lg:pl-5 md:pl-0">
-        <div className='mt-3 w-full flex bg-DEDE justify-center p-2'>
-          <DatePicker 
-          type="range" 
-          value={value} 
+      <div className="flex flex-col justify-between items-center lg:pl-5 md:pl-0 m-auto">
+        <div className='w-full p-2 text-black'>
+        <RangeDatePicker
+          startDate={startDate}
+          endDate={endDate}
           onChange={handleDateChange}
-          className="none"/>
+        />
         </div>
         <div className='flex flex-col justify-between items-center'>
           <p className="text-lg font-bold mt-3">Price: $ {product.price} / 5 days</p>
@@ -251,13 +247,14 @@ const DetailsPage: React.FC = () => {
             <p>(4 Stjärnor) av 10 betyg</p>
           </div>
           <button className="bg-rich-green text-white px-8 py-2 lg:w-96 md:w-full rounded-sm hover:bg-off-green mt-3">Kontakta värden</button>
-          <Link to={'/betalning'}>
+          <Link to={`/betalning?startDate=${startDate}&endDate=${endDate}`}>
             <button className="bg-rich-blue text-white px-8 py-2 lg:w-96 md:w-full rounded-sm hover:bg-off-blue mt-3" onClick={() => addToCart(product)}>Boka nu</button>
           </Link>
           <p onClick={handleDeleteProduct} className='font-bold text-xs mt-3'>Gratis natt vid köp över 5000:-</p>
         </div>
       </div>
 
+      </div>
     </div>
   </div>
 </div>

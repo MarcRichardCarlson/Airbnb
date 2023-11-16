@@ -27,6 +27,7 @@ const Payment: React.FC = () => {
 
   const startDateParam = queryParams.get('startDate');
   const endDateParam = queryParams.get('endDate');
+  const guestsParam = queryParams.get('guests');
 
   // Parse ISO strings to Date objects
   const startDateObj = startDateParam ? new Date(startDateParam) : null;
@@ -35,13 +36,14 @@ const Payment: React.FC = () => {
   useEffect(() => {
     console.log('startDateObj:', startDateObj);
     console.log('endDateObj:', endDateObj);
-  }, [startDateObj, endDateObj]);
+    console.log('guestsParam:', guestsParam);
+  }, [startDateObj, endDateObj, guestsParam]);
 
   return (
-    <div className='flex h-screen'>
+    <div className='flex'>
         {cartItems.map((item: ProductDetailsProps) => (
-        <div className='flex px-8'>
-            <div className='w-1/2 h-full pt-4'>
+        <div className='lg:flex md:inline px-8'>
+            <div className='w-full pt-4'>
                 <div className='px-4 h-full'>
 
                 <div className='flex justify-left items-center w-full text-sm'>
@@ -91,30 +93,32 @@ const Payment: React.FC = () => {
                     ) : (
                         <p>Dates not found in the URL parameters.</p>
                     )}
-                        <p>Antal gäster  4</p>
+                        <p>Antal gäster {guestsParam || 'Not specified'}</p>
                     </div>
                 </div>
             </div>
 
-            <div className='w-1/2 h-full px-12 pt-4 bg-light-grey'>
+            <div className='w-full px-12 pt-2 pb-4 bg-light-grey my-4'>
                 <h1 className='mt-3 text-3xl text-center'>Betalning</h1>
                 <p className='text-center'>Slutför din bokning genom at ange dina betalningsuppgifter</p>
-                <p className='mt-4'>Email adress</p>
+                <p className='mt-3'>Email adress</p>
                 <input className='w-full rounded-sm p-1'></input>
-                <p className='mt-4'>Kort detaljer</p>
+                <p className='mt-3'>Kort detaljer</p>
                 <input className='w-full rounded-sm p-1'></input>
-                <p className='mt-4'>kortinnehavarens namn</p>
+                <p className='mt-3'>kortinnehavarens namn</p>
                 <input className='w-full rounded-sm p-1'></input>
-                <p className='mt-4'>Faktureringsadress</p>
+                <p className='mt-3'>Faktureringsadress</p>
                 <input className='w-full rounded-sm p-1'></input>
-                <p className='mt-4'>Momsregistreringsnummer</p>
+                <p className='mt-3'>Momsregistreringsnummer</p>
                 <input className='w-full rounded-sm p-1'></input>
                 <div className='p-3 mt-4 w-full h-28 bg-white'>
                     <p>delsumma {item.price}:-</p>
                     <p>moms {calculateMomsAddition(item.price)}:-</p>
                     <div className='flex justify-between'>
                         <h1 className='text-3xl'>Totalt {item.price + calculateMomsAddition(item.price)}:-</h1>
-                        <button className='bg-rich-green rounded w-24 text-white'>Betala</button>
+                        <Link to={'/paymentconfirmation'}>
+                            <button className='bg-rich-green rounded w-24 h-8 text-white'>Betala</button>
+                        </Link>
                     </div>
                 </div>
             </div>

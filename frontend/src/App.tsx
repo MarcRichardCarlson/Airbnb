@@ -12,6 +12,7 @@ import Payment from './Pages/Payment/Payment';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import CancellationPolicy from './Pages/cancellationPolicy/cancellationPolicy';
+import PaymentConfirmation from './Pages/PaymentConfirmation/confirmation';
 
 export default function App() {
 
@@ -29,6 +30,7 @@ export default function App() {
               <Route path="/login" element={<Login/>} />
               <Route path="/registrera" element={<Register/>} />
               <Route path="/avbokningspolicy" element={<CancellationPolicy/>} />
+              <Route path="/paymentconfirmation" element={<PaymentConfirmation productName={''} imageUrls={[]} startDate={''} endDate={''} guests={''} totalPrice={0}/>} />
             </Routes>
             <Cart/>
           <Footer/>

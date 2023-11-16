@@ -24,7 +24,7 @@ const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        className="p-2 border border-gray-300 rounded"
+        className="p-2 border border-gray-300 rounded w-full"
         placeholderText='Från:'
       />
       <DatePicker
@@ -34,7 +34,7 @@ const RangeDatePicker: React.FC<RangeDatePickerProps> = ({
         startDate={startDate}
         endDate={endDate}
         minDate={startDate}
-        className="p-2 border border-gray-300 rounded"
+        className="p-2 border border-gray-300 rounded w-full"
         placeholderText='Till:'
       />
     </div>

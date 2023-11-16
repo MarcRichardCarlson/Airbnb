@@ -114,18 +114,18 @@ const DetailsPage: React.FC = () => {
       {windowWidth > 735 && (
         <div className='inline'>
           
-        <div className='flex justify-left items-center w-full text-sm px-6'>
+        <div className='flex justify-left items-center w-full text-sm px-6 ml-2 mb-1'>
           <Link to={'/'}>Boenden &nbsp;</Link>
           <MdOutlineKeyboardArrowRight/>
           <p>{product.productName}</p>
         </div>
 
         <div className='flex px-8'>
-          <div className="flex w-1/2 rounded mr-1">
-            <img className="object-cover rounded m-1 cursor-poniter" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
+          <div className="flex w-1/2 mr-1 rounded">
+            <img className="object-cover rounded cursor-poniter" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
           </div>
 
-          <div className="flex w-1/2 h-3/5 rounded p-1 relative">
+          <div className="flex w-1/2 h-3/5 rounded relative mb-1">
 
             <div>
               <img className="object-cover h-1/2 w-full rounded cursor-poniter" src={product.imageUrls[1]} alt={`Image of ${product.productName}`}/>
@@ -167,7 +167,7 @@ const DetailsPage: React.FC = () => {
       </Carousel>
     )}
   <div className='lg:px-8 md:px-4 sm:px-0'>
-    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded p-10 mt-2 ">
+    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded px-10 py-4 mt-1 ">
       <div className='w-full'>
       
         <h2 className="text-3xl font-bold">{product.productName}</h2>

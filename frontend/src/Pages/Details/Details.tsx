@@ -190,41 +190,37 @@ const DetailsPage: React.FC = () => {
           </div>
 
           {showText1 ? (
-            <div className="w-full">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quod ipsam,
-            quas at inventore beatae asperiores natus corrupti atque eaque, nobis fuga blanditiis mollitia aperiam 
-            suscipit velit distinctio. Fugit, nisi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quod ipsam,
-            quas at inventore beatae asperiores natus corrupti atque eaque, nobis fuga blanditiis mollitia aperiam 
-            suscipit velit distinctio. Fugit, nisi?</div>
+            <div className="w-full">{product.description}</div>
           ) : (
-            <div className="w-full">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita cumque quod
-            quaerat sint dicta ipsa unde incidunt. Ullam aperiam voluptatum placeat dolores illo a, quod necessitatibus
-              nesciunt sequi ducimus suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, quod ipsam,
-            quas at inventore beatae asperiores natus corrupti atque eaque, nobis fuga blanditiis mollitia aperiam 
-            suscipit velit distinctio. Fugit, nisi?</div>
+            <div className="w-full">Vid avbokning mer än 72 timmar före bokad tid återbetalas hela beloppet.
+             Avbokningar som görs inom 72 timmar innan den planerade aktiviteten ger ingen rätt till återbetalning.
+              Vi förstår att oförutsedda händelser kan inträffa, och i sådana fall är vi öppna för att diskutera 
+              alternativa arrangemang eller erbjudanden för framtida bokningar.
+            Vi värdesätter våra kunders förståelse och samarbete. För mer information eller för att avboka vänligen kontakta vår kundtjänst på support@example.com </div>
           )}
         </div>
 
-        <div className="w-full border-light-grey border-4 p-3 mb-3">
-            <h4 className='text-xl font-bold text-center mb-3'>Ingår</h4>
+        <div className="w-full border-light-grey border-2 p-3 mb-3">
+            <h4 className='text-lg font-bold text-center mb-3'>Ingår</h4>
               <div className='flex justify-center itmes-center h-20 pt-3'>
                 <div className='w-full h-full'>
-                  <FaWifi className='w-8 h-8 m-auto'/>
+                  <FaWifi className='w-6 h-6 m-auto'/>
                   <p className='font-bold text-center'>Wifi</p>
                 </div>
                 <div className='w-full h-full'>
-                  <FaKitchenSet className='w-8 h-8 m-auto'/>
+                  <FaKitchenSet className='w-6 h-6 m-auto'/>
                   <p className='font-bold text-center'>Kök</p>
                 </div>
                 <div className='w-full h-full'>
-                  <BiCoffee className='w-8 h-8 m-auto'/>
+                  <BiCoffee className='w-6 h-6 m-auto'/>
                   <p className='font-bold text-center'>Frukost</p>
                 </div>
                 <div className='w-full h-full'>
-                  <LuBedDouble className='w-8 h-8 m-auto'/>
+                  <LuBedDouble className='w-6 h-6 m-auto'/>
                   <p className='font-bold text-center'>Dubbelsäng</p>
                 </div>
                 <div className='w-full h-full'>
-                  <PiTelevisionBold className='w-8 h-8 m-auto'/>
+                  <PiTelevisionBold className='w-6 h-6 m-auto'/>
                   <p className='font-bold text-center'>Tv</p>
                 </div>
               </div>

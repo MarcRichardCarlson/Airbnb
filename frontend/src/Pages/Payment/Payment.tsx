@@ -28,6 +28,7 @@ const Payment: React.FC = () => {
   const startDateParam = queryParams.get('startDate');
   const endDateParam = queryParams.get('endDate');
   const guestsParam = queryParams.get('guests');
+  const productId = queryParams.get('productId');
 
   // Parse ISO strings to Date objects
   const startDateObj = startDateParam ? new Date(startDateParam) : null;
@@ -37,7 +38,11 @@ const Payment: React.FC = () => {
     console.log('startDateObj:', startDateObj);
     console.log('endDateObj:', endDateObj);
     console.log('guestsParam:', guestsParam);
-  }, [startDateObj, endDateObj, guestsParam]);
+    console.log('productId:', productId);
+  }, [startDateObj, endDateObj, guestsParam, productId]);
+
+  const item = cartItems.length > 0 ? cartItems[0] : null;
+
 
   return (
     <div className='flex'>

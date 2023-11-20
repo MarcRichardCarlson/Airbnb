@@ -5,4 +5,5 @@ interface Product {
   description: string;
   price: number;
   imageUrls: string[];
+  id: any;
 }

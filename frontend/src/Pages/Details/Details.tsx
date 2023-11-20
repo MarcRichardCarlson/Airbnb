@@ -21,6 +21,7 @@ interface ProductDetailsProps {
   imageUrls: string[];
   id: string; 
 }
+
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
@@ -63,13 +64,14 @@ const DetailsPage: React.FC = () => {
   /*Fetching products by ID*/
   useEffect(() => {
     if (productId) {
-      console.log(`Fetching product with ID: ${productId}`);
+      console.log(`Details fetching product with ID: ${productId}`);
       const fetchProductData = async () => {
         try {
           const productData = await productsService.getProductById(productId);
-
+          
           if (productData) {
             setProduct(productData as ProductDetailsProps);
+
           } else {
             console.error(`Product with ID ${productId} not found`);
           }
@@ -104,7 +106,7 @@ const DetailsPage: React.FC = () => {
   }
 
   const guestsInputElement = document.getElementById('guestsInput') as HTMLInputElement | null;
-  const guestsValue = guestsInputElement ? guestsInputElement.value : '1';
+  const guestsValue = guestsInputElement ? parseInt(guestsInputElement.value, 10) : 1;
   
   return (
     <>
@@ -257,14 +259,15 @@ const DetailsPage: React.FC = () => {
             <p>(4 Stjärnor) av 10 betyg</p>
           </div>
           <button className="bg-rich-green text-white px-8 py-2 lg:w-96 md:w-full rounded-sm hover:bg-off-green mt-3">Kontakta värden</button>
-          <Link to={`/betalning?startDate=${startDate}&endDate=${endDate}&guests=${guestsValue}`}>
-            <button className="bg-rich-blue text-white px-8 py-2 lg:w-96 md:w-full rounded-sm hover:bg-off-blue mt-3" onClick={() => addToCart(product)}>Boka nu</button>
+           
+          <Link to={`/betalning?startDate=${startDate}&endDate=${endDate}&guests=${guestsValue}&productId=${productId}`} onClick={() => addToCart(product)}>
+            <button className="bg-rich-blue text-white px-8 py-2 lg:w-96 md:w-full rounded-sm hover:bg-off-blue mt-3">Boka nu</button>
           </Link>
           <p onClick={handleDeleteProduct} className='font-bold text-xs mt-3'>Gratis natt vid köp över 5000:-</p>
         </div>
       </div>
 
-      </div>
+      </div>  
     </div>
   </div>
 </div>

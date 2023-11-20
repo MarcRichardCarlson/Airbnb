@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useCart } from '../../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
@@ -21,8 +21,37 @@ const calculateMomsAddition = (price: number): number => {
 
 const Payment: React.FC = () => {
     const [showText1, setShowText1] = useState(false);
+    const navigate = useNavigate();
     const { cartItems } = useCart();
     const location = useLocation();
+    const [email, setEmail] = useState('');
+    const [cardDetails, setCardDetails] = useState('');
+    const [cardHolderName, setCardHolderName] = useState('');
+    const [billingAddress, setBillingAddress] = useState('');
+    const [momsRegistrationNumber, setMomsRegistrationNumber] = useState('');
+
+    const handlePayment = () => {
+        const paymentDetails = {
+          email,
+          cardDetails,
+          cardHolderName,
+          billingAddress,
+          momsRegistrationNumber,
+        };
+    
+        // Use navigate to navigate to the next page with payment details
+        navigate('/paymentconfirmation', {
+          state: {
+            paymentDetails,
+            productName: cartItems[0].productName, // Pass any other relevant details
+            imageUrls: cartItems[0].imageUrls,
+            startDate: startDateObj?.toLocaleDateString(),
+            endDate: endDateObj?.toLocaleDateString(),
+            guests: guestsParam || 'Not specified',
+            totalPrice: cartItems[0].price + calculateMomsAddition(cartItems[0].price),
+          },
+        });
+      };
     
 
   const queryParams = new URLSearchParams(location.search);
@@ -108,15 +137,25 @@ const Payment: React.FC = () => {
                     <h1 className='mt-2 text-3xl text-center'>Betalning</h1>
                     <p className='text-center'>Slutför din bokning genom at ange dina betalningsuppgifter</p>
                     <p className='mt-2'>Email adress</p>
-                    <input className='w-full rounded-sm p-1'></input>
+                    <input value={email}
+                    onChange={(e) => setEmail(e.target.value)} className='w-full rounded-sm p-1'></input>
+
                     <p className='mt-2'>Kort detaljer</p>
-                    <input className='w-full rounded-sm p-1'></input>
+                    <input value={cardDetails}
+                    onChange={(e) => setCardDetails(e.target.value)} className='w-full rounded-sm p-1'></input>
+
                     <p className='mt-2'>kortinnehavarens namn</p>
-                    <input className='w-full rounded-sm p-1'></input>
+                    <input value={cardHolderName}
+                    onChange={(e) => setCardHolderName(e.target.value)} className='w-full rounded-sm p-1'></input>
+
                     <p className='mt-2'>Faktureringsadress</p>
-                    <input className='w-full rounded-sm p-1'></input>
+                    <input value={billingAddress}
+                    onChange={(e) => setBillingAddress(e.target.value)} className='w-full rounded-sm p-1'></input>
+
                     <p className='mt-2'>Momsregistreringsnummer</p>
-                    <input className='w-full rounded-sm p-1'></input>
+                    <input value={momsRegistrationNumber}
+                    onChange={(e) => setMomsRegistrationNumber(e.target.value)} className='w-full rounded-sm p-1'></input>
+
                 </div>
                     <div className='p-3 mt-1 w-full h-28 bg-DEDE rounded-md'>
                         <p>delsumma {cartItem.price}:-</p>
@@ -124,7 +163,7 @@ const Payment: React.FC = () => {
                         <div className='flex justify-between'>
                             <h1 className='text-3xl'>Totalt {cartItem.price + calculateMomsAddition(cartItem.price)}:-</h1>
                             <Link to={'/paymentconfirmation'}>
-                                <button className='bg-rich-green rounded w-24 h-8 text-white'>Betala</button>
+                                <button onClick={handlePayment} className='bg-rich-green rounded w-24 h-8 text-white'>Betala</button>
                             </Link>
                         </div>
                     </div>

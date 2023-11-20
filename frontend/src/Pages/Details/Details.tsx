@@ -122,22 +122,23 @@ const DetailsPage: React.FC = () => {
           <p>{product.productName}</p>
         </div>
 
-        <div className='flex px-8'>
-          <div className="flex w-1/2 mr-1 rounded">
-            <img className="object-cover rounded cursor-poniter" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
+        <div className='flex flex-wrap px-8 h-96'>
+
+          <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
+            <img className="object-cover w-full h-48 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
           </div>
 
-          <div className="flex w-1/2 h-3/5 rounded relative mb-1">
+          <div className="flex flex-wrap w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
 
-            <div>
-              <img className="object-cover h-1/2 w-full rounded cursor-poniter" src={product.imageUrls[1]} alt={`Image of ${product.productName}`}/>
-              <img className="object-cover h-1/2 w-full rounded mt-1 cursor-poniter" src={product.imageUrls[2]} alt={`Image of ${product.productName}`}/>
+            <div className="h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
+              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer" src={product.imageUrls[1]} alt={`Image of ${product.productName}`} />
+              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[2]} alt={`Image of ${product.productName}`} />
             </div>
 
-            <div className='inline-block ml-1'>
-              <img className="object-cover h-1/2 w-full rounded cursor-poniter" src={product.imageUrls[3]} alt={`Image of ${product.productName}`}/>
-              <img className="object-cover h-1/2 w-full rounded mt-1 cursor-poniter" src={product.imageUrls[4]} alt={`Image of ${product.productName}`}/>
-                <button className='absolute right-2 bottom-1 bg-rich-blue text-white rounded-sm p-3 hover:bg-off-blue'>Visa alla foton</button>
+            <div className='h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-2 md:mb-0 lg:mb-0 xl:mb-0 relative'>
+              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer" src={product.imageUrls[3]} alt={`Image of ${product.productName}`} />
+              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[4]} alt={`Image of ${product.productName}`} />
+              <button className='absolute right-2 bottom-1 bg-rich-blue text-white rounded-sm p-3 hover:bg-off-blue'>Visa alla foton</button>
             </div>
 
           </div>

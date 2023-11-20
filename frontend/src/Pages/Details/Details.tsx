@@ -116,34 +116,34 @@ const DetailsPage: React.FC = () => {
       {windowWidth > 735 && (
         <div className='inline'>
           
-        <div className='flex justify-left items-center w-full text-sm px-6 ml-2 mb-1'>
-          <Link to={'/'}>Boenden &nbsp;</Link>
-          <MdOutlineKeyboardArrowRight/>
-          <p>{product.productName}</p>
-        </div>
-
-        <div className='flex flex-wrap px-8 h-96'>
-
-          <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
-            <img className="object-cover w-full h-48 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
+          <div className='flex justify-left items-center w-full text-sm px-6 ml-2 mb-1'>
+            <Link to={'/'}>Boenden &nbsp;</Link>
+            <MdOutlineKeyboardArrowRight/>
+            <p>{product.productName}</p>
           </div>
 
-          <div className="flex flex-wrap w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
+          <div className='flex flex-wrap px-8 h-full'>
 
-            <div className="h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
-              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer" src={product.imageUrls[1]} alt={`Image of ${product.productName}`} />
-              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[2]} alt={`Image of ${product.productName}`} />
+            <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
+              <img className="object-cover w-full h-48 md:h-full rounded cursor-pointer mt-1" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
             </div>
 
-            <div className='h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-2 md:mb-0 lg:mb-0 xl:mb-0 relative'>
-              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer" src={product.imageUrls[3]} alt={`Image of ${product.productName}`} />
-              <img className="object-cover w-full h-24 md:h-1/2 rounded cursor-pointer mt-1" src={product.imageUrls[4]} alt={`Image of ${product.productName}`} />
-              <button className='absolute right-2 bottom-1 bg-rich-blue text-white rounded-sm p-3 hover:bg-off-blue'>Visa alla foton</button>
-            </div>
+            <div className="flex flex-wrap w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
 
+              <div className="h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 pr-1">
+                <img className="object-cover w-full h-24 md:h-full rounded cursor-pointer" src={product.imageUrls[1]} alt={`Image of ${product.productName}`} />
+                <img className="object-cover w-full h-24 md:h-full rounded cursor-pointer mt-1" src={product.imageUrls[2]} alt={`Image of ${product.productName}`} />
+              </div>
+
+              <div className='h-1/2 w-full md:w-1/2 lg:w-1/2 xl:w-1/2 mb-2 md:mb-0 lg:mb-0 xl:mb-0 relative'>
+                <img className="object-cover w-full h-24 md:h-full rounded cursor-pointer" src={product.imageUrls[3]} alt={`Image of ${product.productName}`} />
+                <img className="object-cover w-full h-24 md:h-full rounded cursor-pointer mt-1" src={product.imageUrls[4]} alt={`Image of ${product.productName}`} />
+                <button className='absolute right-2 bottom-1 bg-rich-blue text-white rounded-sm p-3 hover:bg-off-blue'>Visa alla foton</button>
+              </div>
+
+            </div>
           </div>
         </div>
-      </div>
       )}
     
     {windowWidth <= 735 && (
@@ -170,7 +170,7 @@ const DetailsPage: React.FC = () => {
       </Carousel>
     )}
   <div className='lg:px-8 md:px-4 sm:px-0'>
-    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded px-10 py-4 mt-1 ">
+    <div className="lg:flex md:inline w-full bg-DEDE bg-opacity-70 rounded px-10 py-4 mt-2 ">
       <div className='w-full'>
       
         <h2 className="text-3xl font-bold">{product.productName}</h2>

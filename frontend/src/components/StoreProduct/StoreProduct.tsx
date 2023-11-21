@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import Rating from '../rating/rating';
 
 export type StoreProductProps = {
   id?: any;
@@ -30,7 +31,10 @@ const StoreProduct: React.FC<StoreProductProps> = ({ id, productName, price, ima
         </div>
         }
 
-        {hasImages && <img className='rounded-t-lg object-cover w-full h-72' src={imageUrls[0]} alt={productName} />}
+        <div className='relative'>
+          {hasImages && <img className='rounded-t-lg object-cover w-full h-72' src={imageUrls[0]} alt={productName} />}
+          <Rating/>
+        </div>
         <div className='p-2 h-40 overflow-hidden'>
           <h2 className='pb-1 text-xl font-bold'>{productName}</h2>
           <p className='sm:text-base md:text-sm lg:text-sm'>{description}</p>

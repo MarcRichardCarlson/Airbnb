@@ -32,26 +32,30 @@ const Payment: React.FC = () => {
 
     const handlePayment = () => {
         const paymentDetails = {
-          email,
-          cardDetails,
-          cardHolderName,
-          billingAddress,
-          momsRegistrationNumber,
+        email,
+        cardDetails,
+        cardHolderName,
+        billingAddress,
+        momsRegistrationNumber,
         };
-    
-        // Use navigate to navigate to the next page with payment details
-        navigate('/paymentconfirmation', {
-          state: {
-            paymentDetails,
-            productName: cartItems[0].productName, // Pass any other relevant details
-            imageUrls: cartItems[0].imageUrls,
-            startDate: startDateObj?.toLocaleDateString(),
-            endDate: endDateObj?.toLocaleDateString(),
-            guests: guestsParam || 'Not specified',
-            totalPrice: cartItems[0].price + calculateMomsAddition(cartItems[0].price),
-          },
-        });
-      };
+
+        console.log('Current Page:', location.pathname);
+        // Check if cartItems is not empty before accessing [0]
+        if (cartItems.length > 0) {
+            navigate('/paymentconfirmation', {
+            state: {
+                paymentDetails,
+                productName: cartItems[0].productName,
+                imageUrls: cartItems[0].imageUrls,
+                startDate: startDateObj?.toLocaleDateString(),
+                endDate: endDateObj?.toLocaleDateString(),
+                guests: guestsParam || 'Not specified',
+                totalPrice: cartItems[0].price + calculateMomsAddition(cartItems[0].price),
+            },
+            });              
+        }
+    };
+      
     
 
   const queryParams = new URLSearchParams(location.search);
@@ -79,7 +83,7 @@ const Payment: React.FC = () => {
     <div className='flex px-5'>
         {cartItems.map((cartItem: ProductDetailsProps) => (
         <div className='lg:flex md:inline' key={cartItem.id}>
-            <div className='w-full pt-4'>
+            <div className='w-full pt-4 h-full'>
                 <div className='px-1 h-full'>
 
                 <div className='flex justify-left items-center w-full text-sm'>
@@ -133,7 +137,7 @@ const Payment: React.FC = () => {
                 </div>
             </div>
             <div className='px-1 w-full'>
-                <div className=' pt-2 pb-16 bg-light-grey rounded-md mt-12 mb-1 px-6'>
+                <div className=' pt-2 pb-14 bg-light-grey rounded-md mt-12 mb-1 px-6'>
                     <h1 className='mt-2 text-3xl text-center'>Betalning</h1>
                     <p className='text-center'>Slutför din bokning genom at ange dina betalningsuppgifter</p>
                     <p className='mt-2'>Email adress</p>
@@ -162,9 +166,7 @@ const Payment: React.FC = () => {
                         <p>moms {calculateMomsAddition(cartItem.price)}:-</p>
                         <div className='flex justify-between'>
                             <h1 className='text-3xl'>Totalt {cartItem.price + calculateMomsAddition(cartItem.price)}:-</h1>
-                            <Link to={'/paymentconfirmation'}>
                                 <button onClick={handlePayment} className='bg-rich-green rounded w-24 h-8 text-white'>Betala</button>
-                            </Link>
                         </div>
                     </div>
             </div>                

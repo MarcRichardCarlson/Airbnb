@@ -30,7 +30,7 @@ export default function App() {
               <Route path="/login" element={<Login/>} />
               <Route path="/registrera" element={<Register/>} />
               <Route path="/avbokningspolicy" element={<CancellationPolicy/>} />
-              <Route path="/paymentconfirmation" element={<PaymentConfirmation productName={''} imageUrls={[]} startDate={''} endDate={''} guests={''} totalPrice={0}/>} />
+              <Route path="/paymentconfirmation" element={<PaymentConfirmation/>} />
             </Routes>
             <Cart/>
           <Footer/>

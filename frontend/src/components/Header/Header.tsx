@@ -87,7 +87,7 @@ const Header: React.FC = () => {
         <Link to={'/'}>
           <h1 className='text-2xl font-bold text-white drop-shadow-lg'>Oldbnb</h1>
         </Link>
-
+          
           <SearchBar/>
 
           <div className='flex justify-between items-center w-80'>
@@ -146,7 +146,7 @@ const Header: React.FC = () => {
           <div className=' flex justify-center items-center h-20 w-40 mb-4 rounded-b-full bg-default-orange'>
             <p className='text-white text-xl font-bold'>Oldbnb</p>
           </div>
-
+        
           <DropdownMenu options={options} onSelect={handleSelect} isLoggedIn={isLoggedIn}/>
 
         </nav>

@@ -52,7 +52,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className='relative z-50'>
 
       <div className='w-full bg-white flex justify-center items-center rounded-md shadow-lx'>
         
@@ -70,23 +70,25 @@ const SearchBar = () => {
           onChange={(e) => handleChange(e.target.value)}
         />
       </div>
-      {results.length > 0 && (
-        <div className='w-full bg-white absolute top-9 left-50 rounded-md p-2 shadow-lg Z-50'>
-          {results.map((product) => (
-            <Link
-              to={`/details/${product._id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleResultClick}
-            >
-              <div className='w-full h-10 mb-1 bg-default-white flex items-center cursor-pointer shadow-lg rounded-sm hover:bg-off-white' key={product._id}>
-                <img className="object-cover h-full w-24" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
-                <p className='w-full flex items-center pl-2 h-12 text-sm'>{product.productName}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+
+        {results.length > 0 && (
+          <div className='w-full bg-white absolute top-9 left-1/2 transform -translate-x-1/2 rounded-md p-2 shadow-lg z-50'>
+            {results.map((product) => (
+              <Link
+                to={`/details/${product._id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleResultClick}
+              >
+                <div className='w-full h-10 mb-1 bg-default-white flex items-center cursor-pointer shadow-lg rounded-sm hover:bg-off-white' key={product._id}>
+                  <img className="object-cover h-full w-24" src={product.imageUrls[0]} alt={`Image of ${product.productName}`} />
+                  <p className='w-full flex items-center pl-2 h-12 text-sm'>{product.productName}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
     </div>
   );
 };

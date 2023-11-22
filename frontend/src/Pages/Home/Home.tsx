@@ -42,7 +42,7 @@ const HomePage: React.FC = () => {
       <div className="w-full h-full bg-DEDE 
       grid gap-3 pt-10 px-6
       pb-10 sm:grid-cols-1 md:grid-cols-2
-      lg:grid-cols-3 xl:grid-cols-4">
+      lg:grid-cols-3 xl:grid-cols-4 z-0">
         {productList.map((product) => {
             const Product = product;
             console.log("Product:", Product);

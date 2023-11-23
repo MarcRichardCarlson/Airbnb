@@ -20,11 +20,11 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, isLogged
     onSelect(option);
     setIsOpen(false);
   };
-
+  
   const handleLogout = () => {
-    userService.logoutUser() // Call the logout function to clear user data and token
+    // Call the logout function to clear user data and token
+    userService.logoutUser()
     console.log('Logout');
-    // You can also redirect the user to the login page or perform other actions after logout
   };
 
   function handleProductCreationSuccess(): void {
@@ -36,7 +36,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, isLogged
       <div>
         <button
           type="button"
-          className="inline-flex justify-center items-center w-full rounded-md shadow-sm px-2 py-2 bg-rich-blue text-sm font-medium text-white hover:bg-off-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+          className=" inline-flex justify-center items-center w-full rounded-md shadow-sm px-2 py-2 bg-rich-blue text-sm font-medium text-white hover:bg-off-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
           id="options-menu"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -58,7 +58,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, onSelect, isLogged
       </div>
       {isOpen && (
         <div
-          className="origin-top-right absolute right-0 mt-3 w-56 rounded-md shadow-lg bg-rich-blue ring-1 ring-black ring-opacity-5"
+          className="origin-top-right absolute right-0 mt-4 w-56 rounded-md shadow-lg bg-rich-blue ring-1 ring-black ring-opacity-5"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="options-menu"

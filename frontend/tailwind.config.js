@@ -40,8 +40,8 @@ module.exports = {
         'off-grey': '#4f4f4f',
         'light-grey': '#D9D9D9',
         'darker-light-grey': '#7D7D7D',
-        'default-red': '#A1000E',
-        'off-red': '#D10000',
+        'default-red': '#FF000E',
+        'off-red': '#9A0000',
       }
     },
   },

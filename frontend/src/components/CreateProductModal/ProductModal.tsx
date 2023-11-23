@@ -131,13 +131,13 @@ const CreateProductModal: React.FC<CreateProductModalProps> = ({
             </div>
             <div style={{ display: 'flex', marginTop: '10px' }}>
               {product.imageUrls.map((url, index) => (
-                <div key={index} style={{ display: 'flex', alignItems: 'center', marginRight: '7px' }}>
+                <div key={index} style={{position: 'relative', display: 'flex', alignItems: 'center', marginRight: '7px' }}>
                   <img
                     src={url}
                     alt={`Thumbnail ${index}`}
-                    style={{ objectFit: 'cover', width: '70px', height: '50px', marginRight: '1px' }}
+                    style={{objectFit: 'cover', width: '70px', height: '50px', marginRight: '1px' }}
                   />
-                  <FontAwesomeIcon className='bg-default-red rounded-full h-3 w-3 p-1 cursor-pointer hover:bg-off-red' icon={faXmark} onClick={() => handleRemoveImageUrl(index)}/>
+                  <FontAwesomeIcon className='absolute -top-1 -right-1 flex justify-center items-center text-white bg-default-red rounded-full h-4 w-4 cursor-pointer hover:bg-off-red' icon={faXmark} onClick={() => handleRemoveImageUrl(index)}/>
                 </div>
               ))}
             </div>
